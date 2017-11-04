@@ -1,0 +1,101 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.banner-picture {
+  background-image: url("https://image.ibb.co/ckuPNb/brooke_lark_158017.jpg");
+  background-size: cover;
+  max-width: 100%;
+  height: 30vw;
+  margin-top: 2vw;
+  text-align: center;
+}
+
+h1 {
+  color: blue;
+  text-align: right;
+  margin: auto;
+  font-size: 1.5vw;
+}
+
+h2 {
+  margin-top: 6vw;
+  margin-bottom: 9vw;
+  text-align: center;
+  color: #7c88a0;
+  font-size: 4vw;
+  font-family: 'UniqueRegular';
+}
+
+h3 {
+  font-family: "LatoRegular";
+  text-align: center;
+  color: #7c88a0;
+  font-size: 2.5vw;
+  border-bottom: 1px solid;
+  margin-bottom: 2vw;
+  padding-bottom: 1vw;
+  padding-top: 1vw;
+}
+
+h4 {
+  margin: auto;
+  color: #e85d00;
+  font-size: 1.5vw;
+}
+
+h5 {
+  color: #7c88a0;
+  font-size: 2.5vw;
+  font-family: 'UniqueRegular';
+  text-align: center;
+}
+
+h6 {
+  font-family: "LatoRegular";
+  color: gray;
+  font-size: 1.8vw;
+  border-bottom: 1px solid;
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+  font-family: 'GidoleRegular';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5vw;
+}
+
+.main-section {
+  padding-top: 3vw;
+  padding-bottom: 2vw;
+  margin: auto;
+  height: auto;
+  border: 3px solid #bf8b37;
+  border-radius: 1vw;
+}
+
+
+.category {
+  border-right: 3px solid #bf8b37;
+}
+
+img {
+  height: 10vw;
+  display: block;
+}
+
+.list {
+  height: auto;
+}
+
+.row {
+  clear: both;
+  margin: 0;
+}
+.row::after {
+  clear: both;
+  display: table;
+}

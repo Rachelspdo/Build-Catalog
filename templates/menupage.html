@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/lato" type="text/css"/>
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/unique" type="text/css"/>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<div class="container-fluid">
+  <div> <h1> Login </h1> </div>
+  <div class="banner-picture"></div>
+  <div><h2>{{restaurant.name}}</h2></div>
+
+  {% if items !=[] %}
+  <div class="row">
+    <div class="col-6 col-sm-3 list">
+      <img class ="img-responsive" src="https://image.ibb.co/nPrGkw/toa_heftiba_296435.jpg" alt="Sandwich" style="width:100%">
+      <h3>Appertizer</h3>
+      {% for i in items %}
+        {% if i.course == 'Appetizer' %}
+          <div class="menu-item">
+            <h4>{{i.name}}</h4>
+            <p>{{i.description}}</p>
+            <p class="menu-price">{{i.price}}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="col-6 col-sm-3 list">
+      <img class ="img-responsive" src="https://image.ibb.co/hPpxsb/gabriel_garcia_marengo_68299.jpg" alt="Steak" style="width:100%">
+      <h3>Entree</h3>
+      {% for i in items %}
+        {% if i.course == 'Entree' %}
+          <div class="menu-item">
+            <h4>{{i.name}}</h4>
+            <p>{{i.description}}</p>
+            <p class="menu-price">{{i.price}}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="col-6 col-sm-3 list">
+      <img class ="img-responsive" src="https://image.ibb.co/hoYCQw/rachel_park_366508.jpg" alt="Cherries" style="width:100%">
+      <h3>Dessert</h3>
+      {% for i in items %}
+        {% if i.course == 'Dessert' %}
+          <div class="menu-item">
+            <h4>{{i.name}}</h4>
+            <p>{{i.description}}</p>
+            <p class="menu-price">{{i.price}}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="col-6 col-sm-3 list">
+      <img class ="img-responsive" src="https://image.ibb.co/dyGfdG/roman_kraft_310183.jpg" alt="Pasta and Wine" style="width:100%">
+      <h3>Beverrage</h3>
+      {% for i in items %}
+        {% if i.course == 'Beverrage' %}
+          <div class="menu-item">
+            <h4>{{i.name}}</h4>
+            <p>{{i.description}}</p>
+            <p class="menu-price">{{i.price}}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  <br>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>
