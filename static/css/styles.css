@@ -40,9 +40,10 @@ h3 {
 }
 
 h4 {
+  font-family: "LatoRegular";
   margin: auto;
   color: #e85d00;
-  font-size: 1.5vw;
+  font-size: 1.7vw;
 }
 
 h5 {
