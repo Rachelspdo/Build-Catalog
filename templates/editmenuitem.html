@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/lato" type="text/css"/>
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/unique" type="text/css"/>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+	<!--Header Banner section -->
+	<div class="container-fluid">
+	  <h1> Login </h1>
+	  <div class="banner-picture">
+	  </div>
+	  <br>
+		</div>
+		<div><h5>Edit Menu Item</h5>
+	</div>
+
+	<!--Edit Menu Item Form -->
+	<div class="row">
+		<div class="col-9 form ">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<div class="menu-input"><label for="name">Name:</label>
+					<input type ="text" maxlength="100" class="form-control" name="name" value="{{ item.name }}"></div>
+					<div class="menu-input"><label for="description">Description:</label></div>
+					<div><textarea class="form-control" maxlength="250" rows="3" name="description">{{item.description}}</textarea></div>
+					<div class="menu-input">
+						<label for="price">Price: $</label>
+						<input type ="text" maxlength="10" class="form-control" name="price" value="{{item.price}}">
+					</div>
+					<!--Cetegorize Menu Item -->
+					<div class="menu-input"><label for="course">Course:</label></div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="course" id="course1" value="Appetizer" {% if item.course == 'Appetizer'%}checked{%endif%}>Appetizer
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="course" id="course2" value="Entree" {% if item.course == 'Entree' %}checked{%endif%}>Entree
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="course" id="course3" value="Dessert" {% if item.course == 'Dessert'%}checked{%endif%}>Dessert
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="course" id="course4" value="Beverage" {%if item.course =='Beverage'%}checked{%endif%}>Beverage
+					  </label>
+					</div>
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+					<a href = '{{url_for('showRestaurants')}}'>
+						<button class="btn btn-default delete">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
