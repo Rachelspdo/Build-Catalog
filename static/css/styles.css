@@ -71,9 +71,7 @@ p {
 
 .main-section {
   padding-top: 3vw;
-  padding-bottom: 2vw;
-  margin: auto;
-  height: auto;
+  padding-bottom: 3vw;
   border: 3px solid #bf8b37;
   border-radius: 1vw;
 }
@@ -99,4 +97,8 @@ img {
 .row::after {
   clear: both;
   display: table;
+}
+
+.page-space {
+  margin-top: 4vw;
 }
