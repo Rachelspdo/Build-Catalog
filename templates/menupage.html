@@ -12,9 +12,17 @@
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+  <!--navbar -->
+  <div class="nav row">
+  <div class="col-4">
+    <a href="#">Gourmet au Catering</a></div>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="col-8 login-button">
+      <a href="#">Login</a>
+    </div>
+  </div>
   <!--Header Banner section -->
 <div class="container-fluid">
-  <div> <h1> Login </h1> </div>
   <div class="banner-picture"></div>
   <div><h2>{{restaurant.name}}</h2></div>
 <!--List all items in menu by category -->
