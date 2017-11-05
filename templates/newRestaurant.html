@@ -1,0 +1,17 @@
+{% extends "header.html" %}
+{% block content %}
+	<div><h5>NEW RESTAURANT</h5></div>
+	<div class="row form">
+		<div class="col-8">
+			<form action="#" method = "post">
+				<div class="form-group">
+				<div class="menu-input"><label for="name">Name:</label></div>
+				<input type ="text" class="form-control" maxlength="100" name="name">
+				<div class="padding-bottom"></div>
+				<button type="submit" class="btn btn-default" id="submit" type="submit">
+				<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

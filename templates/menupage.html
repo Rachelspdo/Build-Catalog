@@ -1,33 +1,14 @@
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/lato" type="text/css"/>
-  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
-  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/unique" type="text/css"/>
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-  <!--navbar -->
-  <div class="nav row">
-  <div class="col-4">
-    <a href="#">Gourmet au Catering</a></div>
-    <!-- Right-sided navbar links. Hide them on small screens -->
-    <div class="col-8 login-button">
-      <a href="#">Login</a>
-    </div>
-  </div>
-  <!--Header Banner section -->
-<div class="container-fluid">
-  <div class="banner-picture"></div>
+{% extends "header.html" %}
+{% block content %}
   <div><h2>{{restaurant.name}}</h2></div>
+  <div class="func-btn">
+    <p style="text-align:center"><a href="{{url_for('newMenuItem', restaurant_id = restaurant.id )}}" > Add New Menu Item </a></p>
+    <p style="text-align:center"><a href="{{url_for('editRestaurant', restaurant_id = restaurant.id )}}"> Edit The Restaurant </a></p>
+    <p style="text-align:center"><a href="{{url_for('deleteRestaurant', restaurant_id = restaurant.id )}}" > Delete This Restaurant </a></p>
+  </div>
 <!--List all items in menu by category -->
   {% if items !=[] %}
-  <div class="row">
+  <div class="row" style="padding-top:3vw">
     <div class="col-6 col-sm-3 list">
       <img class ="img-responsive" src="https://image.ibb.co/nPrGkw/toa_heftiba_296435.jpg" alt="Sandwich" style="width:100%">
       <h3>Appertizer</h3>
@@ -37,6 +18,8 @@
             <h4>{{i.name}}</h4>
             <p>{{i.description}}</p>
             <p class="menu-price">{{i.price}}</p>
+            <a href='{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}'>Edit</a>
+            <a href='{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}'>Delete</a>
           </div>
         {% endif %}
       {% endfor %}
@@ -50,6 +33,8 @@
             <h4>{{i.name}}</h4>
             <p>{{i.description}}</p>
             <p class="menu-price">{{i.price}}</p>
+            <a href='{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}'>Edit</a>
+            <a href='{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}'>Delete</a>
           </div>
         {% endif %}
       {% endfor %}
@@ -63,6 +48,8 @@
             <h4>{{i.name}}</h4>
             <p>{{i.description}}</p>
             <p class="menu-price">{{i.price}}</p>
+            <a href='{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}'>Edit</a>
+            <a href='{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}'>Delete</a>
           </div>
         {% endif %}
       {% endfor %}
@@ -76,6 +63,8 @@
             <h4>{{i.name}}</h4>
             <p>{{i.description}}</p>
             <p class="menu-price">{{i.price}}</p>
+            <a href='{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}'>Edit</a>
+            <a href='{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id=i.id ) }}'>Delete</a>
           </div>
         {% endif %}
       {% endfor %}
@@ -83,9 +72,4 @@
   </div>
   {% endif %}
   <br>
-</div>
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-</body>
-</html>
+  {% endblock %}
