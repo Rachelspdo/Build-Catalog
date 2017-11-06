@@ -5,6 +5,19 @@
     <div class="col-5 category">
     <h5>RESTAURANTS</h5>
     <p class="notice">(Click the restaurant to see its menu)</p>
+    <div class = 'flash' style="text-align:center">
+    		      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+
+    </div>
     {% for restaurant in restaurants %}
     <a href = "{{url_for('showMenu', restaurant_id = restaurant.id)}}">
     <br>

@@ -182,3 +182,7 @@ img {
 .radio {
   font-size: 1.3vw;
 }
+
+ul {
+  list-style-type: none;
+}
