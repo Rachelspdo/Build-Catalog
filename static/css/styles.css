@@ -18,10 +18,6 @@
   display: table;
 }
 
-.page-space {
-  margin-top: 4vw;
-}
-
 /*banner picture in every page*/
 .banner-picture {
   background-image: url("https://image.ibb.co/ckuPNb/brooke_lark_158017.jpg");
@@ -110,19 +106,17 @@ p {
   letter-spacing: 1.5px;
 }
 
+/*list of restaurants' section styling*/
 .main-section {
-  padding-top: 3vw;
-  padding-bottom: 3vw;
   border: 2px solid #d68941;
-  border-radius: 1vw;
+  padding: 3vw;
 }
+
+/*notice caption for User*/
 .notice {
   font-style: italic;
   font-size: 1vw;
   text-align: center;
-}
-.category {
-  border-right: 2px solid #d68941;
 }
 
 /*img for menupage*/
@@ -158,11 +152,13 @@ img {
   text-align: center;
 }
 
-.del-btn-position {
+/*cancel button styling*/
+.btn-position {
   padding-top: 1vw;
   text-align: center;
 }
 
+/*title button: Name, Description, Price ect..*/
 .func-btn {
   text-align: center;
   margin-bottom: 0.1vw;
@@ -186,4 +182,8 @@ img {
 ul {
   list-style-type: none;
   padding-left: 0;
+}
+
+footer {
+  padding-top: 4vw;
 }

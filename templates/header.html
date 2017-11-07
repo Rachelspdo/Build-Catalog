@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/lato" type="text/css"/>
-  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css"/>
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta charset="utf-8">
+    <title> Menu Application </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/lato" type="text/css" />
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/gidole-regular" type="text/css" />
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
-  <!--navbar -->
-  <div class="container-fluid">
-  <div class="nav row">
-  <div class="col-4">
-    <p><a href="{{url_for('showRestaurants')}}" style="color:#414649; font-size:1.3vw">Gourmet au Catering</a></div></p>
-    <!-- Right-sided navbar links. Hide them on small screens -->
-    <div class="col-8 login-button">
-    <p style="text-align:right"><a href="#" style="color:#414649; font-size:1.3vw">Login</a></p>
+    <!--navbar -->
+    <div class="container-fluid">
+        <div class="nav row">
+            <div class="col-4">
+                <a href="{{url_for('showRestaurants')}}" style="color:#414649; font-size:1.3vw">Gourmet au Catering</a></div>
+            <!-- Right-sided navbar links. Hide them on small screens -->{% if 'username' not in session %}
+            <div class="col-8 login-button">
+                <p style="text-align:right"><a href="{{url_for('showLogin')}}" style="color:#414649; font-size:1.3vw">Login</a></p>
+            </div> {% else %}
+            <div class="col-8 login-button">
+                <p style="text-align:right"><a href="{{url_for('gdisconnect')}}" style="color:#414649; font-size:1.3vw">Logout</a></p> {% endif %}
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-  <!--Header Banner section -->
-<div class="container-fluid">
-  <div class="banner-picture">
-  </div>
-  <br>
-  <div class="container-fluid">
-  {% block content %}
-  {% endblock %}
-</div>
-  <div class="page-space"></div>
+    <!--Header Banner section -->
+    <div class="container-fluid">
+        <div class="banner-picture">
+        </div>
+        <br>
+        <div class="container-fluid"> {% block content %} {% endblock %}
+        </div>
+    </div>
 </body>
+
 </html>

@@ -1,12 +1,11 @@
-{% extends "header.html" %}
-{% block content %}
+{% extends "header.html" %} {% block content %}
 <h5> Are you sure you want to delete {{restaurant.name}}? </h5>
 
-<form class="del-btn-position" action="#" method = 'post'>
+<form class="btn-position" action="#" method='post'>
 
-	<button type="submit" class="btn btn-style" id="submit" type="submit">
-	<a class="glyphicon glyphicon-trash" aria-hidden="true"></a>Delete</button>
-	<a class="btn btn-style" href = '{{url_for('showRestaurants', restaurant_id=restaurant_id )}}' role="button">Cancel</a>
+    <button type="submit" class="btn btn-style" id="submit" type="submit">
+        <a class="glyphicon glyphicon-trash" aria-hidden="true"></a>Delete</button>
+    <a class="btn btn-style" href='{{url_for('showRestaurants', restaurant_id=restaurant_id )}}' role="button">Cancel</a>
 
 </form>
 
