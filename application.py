@@ -94,9 +94,9 @@ def gconnect():
     stored_access_token = login_session.get('access_token')
     stored_gplus_id = login_session.get('gplus_id')
     if stored_access_token is not None and gplus_id == stored_gplus_id:
-        response = make_response\
-                (json.dumps('Current user is already connected.'),
-                200)
+        response = \
+        make_response(json.dumps('Current user is already connected.'),
+        200)
         response.headers['Content-Type'] = 'application/json'
         return response
 
@@ -120,7 +120,7 @@ def gconnect():
     if not user_id:
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
-    
+
     output = ''
     output += '<h1>Welcome, '
     output += login_session['username']
@@ -206,7 +206,7 @@ def showRestaurants():
 
 
 # Create a new restaurant
-@app.route('/restaurant/new/', methods=['GET','POST'])
+@app.route('/restaurant/new/', methods=['GET', 'POST'])
 def newRestaurant():
     if 'username' not in login_session:
         return redirect('/login')
@@ -243,7 +243,7 @@ def editRestaurant(restaurant_id):
 
 
 # Delete a restaurant
-@app.route('/restaurant/<int:restaurant_id>/delete/', methods=['GET','POST'])
+@app.route('/restaurant/<int:restaurant_id>/delete/', methods=['GET', 'POST'])
 def deleteRestaurant(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -254,7 +254,7 @@ def deleteRestaurant(restaurant_id):
     if request.method == 'POST':
         session.delete(restaurantToDelete)
         session.commit()
-        flash('Restaurant Successfully Deleted! '+ restaurantToDelete.name)
+        flash('Restaurant Successfully Deleted! ' + restaurantToDelete.name)
         return redirect(url_for('showRestaurants', restaurant_id=restaurant_id))
     else:
         return render_template('deleteRestaurant.html', restaurant=restaurantToDelete)
@@ -276,7 +276,7 @@ def showMenu(restaurant_id):
 
 
 # Create a new menu item
-@app.route('/restaurant/<int:restaurant_id>/menu/new/',methods=['GET','POST'])
+@app.route('/restaurant/<int:restaurant_id>/menu/new/', methods=['GET', 'POST'])
 def newMenuItem(restaurant_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -321,7 +321,7 @@ def editMenuItem(restaurant_id, menu_id):
 
 
 # Delete a menu item
-@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete', methods=['GET','POST'])
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete', methods=['GET', 'POST'])
 def deleteMenuItem(restaurant_id, menu_id):
     if 'username' not in login_session:
         return redirect('/login')
@@ -344,7 +344,7 @@ def restaurantJSON():
     restaurants = session.query(Restaurant).all()
     return jsonify(Restaurants=[r.serialize for r in restaurants])
 
-    
+
 # Add JSON for each restaurant menu
 @app.route('/restaurant/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
@@ -360,7 +360,7 @@ def menuItemJSON(restaurant_id, menu_id):
     return jsonify(MenuItem=menuItem.serialize)
 
 
-if __name__ =='__main__':
+if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
     app.debug = True
     app.run(host='0.0.0.0', port=5000)
