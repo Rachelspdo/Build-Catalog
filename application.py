@@ -18,6 +18,7 @@ import requests
 
 app = Flask(__name__)
 
+# GConnect CLIENT_ID
 CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Restaurant Menu Application"
@@ -40,6 +41,7 @@ def showLogin():
     return render_template('login.html', STATE=state)
 
 
+# GConnect
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
     # Validate state token
@@ -113,10 +115,12 @@ def gconnect():
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
 
+     # see if user exists, if it doesn't make a new one
     user_id = getUserID(login_session['email'])
     if not user_id:
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
+    
     output = ''
     output += '<h1>Welcome, '
     output += login_session['username']
@@ -332,6 +336,13 @@ def deleteMenuItem(restaurant_id, menu_id):
         return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
         return render_template('deleteMenuItem.html', item=itemToDelete)
+
+
+# Add JSON for restaurants
+@app.route('/restaurant/JSON')
+def restaurantJSON():
+    restaurants = session.query(Restaurant).all()
+    return jsonify(Restaurants=[r.serialize for r in restaurants])
 
     
 # Add JSON for each restaurant menu
