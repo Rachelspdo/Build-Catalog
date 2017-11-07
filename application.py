@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect,jsonify, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect,jsonify, url_for, flash, jsonify, make_response
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
@@ -126,7 +126,7 @@ def gconnect():
 
 #Show all restaurants
 @app.route('/')
-@app.route('/restaurant')
+@app.route('/restaurant/')
 def showRestaurants():
     restaurants = session.query(Restaurant).all()
     return render_template('showrestaurant.html', restaurants = restaurants)
