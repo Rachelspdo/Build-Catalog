@@ -26,7 +26,7 @@ CLIENT_ID = json.loads(
 APPLICATION_NAME = "Restaurant Menu Application"
 
 
-# Login decorator
+# Login decorator to ensure user state
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
