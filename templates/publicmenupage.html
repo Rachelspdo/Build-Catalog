@@ -17,7 +17,7 @@
 {% if items !=[] %}
 <div class="row" style="padding-top:3vw">
     <div class="col-6 col-sm-3 list">
-        <img class="img-responsive" src="https://image.ibb.co/nPrGkw/toa_heftiba_296435.jpg" alt="Sandwich" style="width:100%">
+        <img class="img-responsive" src="{{url_for('static', filename='img/appertizer.jpg')}}" alt="APPERTIZER" style="width:100%">
         <h3>Appertizer</h3> {% for i in items %} {% if i.course == 'Appetizer' %}
         <div class="menu-item">
             <h4>{{i.name}}</h4>
@@ -27,7 +27,7 @@
         {% endif %} {% endfor %}
     </div>
     <div class="col-6 col-sm-3 list">
-        <img class="img-responsive" src="https://image.ibb.co/hPpxsb/gabriel_garcia_marengo_68299.jpg" alt="Steak" style="width:100%">
+        <img class="img-responsive" src="{{url_for('static', filename='img/entree.jpg')}}" alt="ENTREE" style="width:100%">
         <h3>Entree</h3> {% for i in items %} {% if i.course == 'Entree' %}
         <div class="menu-item">
             <h4>{{i.name}}</h4>
@@ -37,7 +37,7 @@
         {% endif %} {% endfor %}
     </div>
     <div class="col-6 col-sm-3 list">
-        <img class="img-responsive" src="https://image.ibb.co/hoYCQw/rachel_park_366508.jpg" alt="Cherries" style="width:100%">
+        <img class="img-responsive" src="{{url_for('static', filename='img/dessert.jpg')}}" alt="DESSERT" style="width:100%">
         <h3>Dessert</h3> {% for i in items %} {% if i.course == 'Dessert' %}
         <div class="menu-item">
             <h4>{{i.name}}</h4>
@@ -47,7 +47,7 @@
         {% endif %} {% endfor %}
     </div>
     <div class="col-6 col-sm-3 list">
-        <img class="img-responsive" src="https://image.ibb.co/dyGfdG/roman_kraft_310183.jpg" alt="Pasta and Wine" style="width:100%">
+        <img class="img-responsive" src="{{url_for('static', filename='img/beverage.jpg')}}" alt="BEVERAGE" style="width:100%">
         <h3>Beverage</h3> {% for i in items %} {% if i.course == 'Beverage' %}
         <div class="menu-item">
             <h4>{{i.name}}</h4>
