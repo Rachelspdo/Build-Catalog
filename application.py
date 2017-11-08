@@ -3,6 +3,7 @@ from flask import jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem, User
+from functools import wraps
 
 # Login Session
 from flask import session as login_session
@@ -23,6 +24,16 @@ app = Flask(__name__)
 CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Restaurant Menu Application"
+
+
+# Login decorator
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username' not in login_session:
+            return redirect('/login')
+        return f(*args, **kwargs)
+    return decorated_function
 
 
 # Connect to Database and create database session
@@ -207,9 +218,8 @@ def showRestaurants():
 
 # Create a new restaurant
 @app.route('/restaurant/new/', methods=['GET', 'POST'])
+@login_required
 def newRestaurant():
-    if 'username' not in login_session:
-        return redirect('/login')
     if request.method == 'POST':
         newRestaurant = Restaurant(
             name=request.form['name'], user_id=login_session['user_id'])
@@ -223,9 +233,8 @@ def newRestaurant():
 
 # Edit a restaurant
 @app.route('/restaurant/<int:restaurant_id>/edit/', methods=['GET', 'POST'])
+@login_required
 def editRestaurant(restaurant_id):
-    if 'username' not in login_session:
-        return redirect('/login')
     editedRestaurant = session.query(
         Restaurant).filter_by(id=restaurant_id).one()
     if editedRestaurant.user_id != login_session['user_id']:
@@ -247,9 +256,8 @@ def editRestaurant(restaurant_id):
 
 # Delete a restaurant
 @app.route('/restaurant/<int:restaurant_id>/delete/', methods=['GET', 'POST'])
+@login_required
 def deleteRestaurant(restaurant_id):
-    if 'username' not in login_session:
-        return redirect('/login')
     restaurantToDelete = session.query(
         Restaurant).filter_by(id=restaurant_id).one()
     if restaurantToDelete.user_id != login_session['user_id']:
@@ -289,9 +297,8 @@ def showMenu(restaurant_id):
 # Create a new menu item
 @app.route('/restaurant/<int:restaurant_id>/menu/new/',
            methods=['GET', 'POST'])
+@login_required
 def newMenuItem(restaurant_id):
-    if 'username' not in login_session:
-        return redirect('/login')
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     if login_session['user_id'] != restaurant.user_id:
         return "<script>function myFunction() \
@@ -316,9 +323,8 @@ def newMenuItem(restaurant_id):
 # Edit a menu item
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit',
            methods=['GET', 'POST'])
+@login_required
 def editMenuItem(restaurant_id, menu_id):
-    if 'username' not in login_session:
-        return redirect('/login')
     editedItem = session.query(MenuItem).filter_by(id=menu_id).one()
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     if login_session['user_id'] != restaurant.user_id:
@@ -348,9 +354,8 @@ def editMenuItem(restaurant_id, menu_id):
 # Delete a menu item
 @app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete',
            methods=['GET', 'POST'])
+@login_required
 def deleteMenuItem(restaurant_id, menu_id):
-    if 'username' not in login_session:
-        return redirect('/login')
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     print "Restaurant Obj:", restaurant
     print restaurant.id
