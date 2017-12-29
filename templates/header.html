@@ -20,10 +20,10 @@
                 <a href="{{url_for('showRestaurants')}}" style="color:#414649; font-size:1.7vw">Gourmet au Catering</a></div>
             <!-- Right-sided navbar links. Hide them on small screens -->{% if 'username' not in session %}
             <div class="col-8 login-button">
-                <p style="text-align:right"><a href="{{url_for('showLogin')}}" style="color:#414649; font-size:1.3vw">Login</a></p>
+                <p style="text-align:right"><a href="{{url_for('showLogin')}}" style="color:#414649; font-size:1.7vw">Login</a></p>
             </div> {% else %}
             <div class="col-8 login-button">
-                <p style="text-align:right"><a href="{{url_for('gdisconnect')}}" style="color:#414649; font-size:1.3vw">Logout</a></p> {% endif %}
+                <p style="text-align:right"><a href="{{url_for('gdisconnect')}}" style="color:#414649; font-size:1.7vw">Logout</a></p> {% endif %}
             </div>
         </div>
     </div>
